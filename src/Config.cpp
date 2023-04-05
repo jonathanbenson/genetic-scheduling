@@ -1,19 +1,45 @@
 
+#include <nlohmann/json.hpp>
+#include <fstream>
+
 #include "Config.h"
 
-std::vector<Activity> Config::ParseActivities(const std::string& path) const
+using json = nlohmann::json;
+using ifstream = std::ifstream;
+using json_arr_iter = nlohmann::json_abi_v3_11_2::detail::iter_impl<nlohmann::json_abi_v3_11_2::json>;
+
+void Config::ParseActivities(const std::string& path)
 {
-    return std::vector<Activity>();
+    ifstream in(path);
+
+    json j;
+
+    in >> j;
+
+    for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
+    {
+        json actJson = *iter;
+
+        Activity act;
+        act.Name = actJson["name"].get<std::string>();
+        act.ExpectedEnrollment = actJson["expected_enrollment"].get<uint>();
+        act.PreferredFacilitators = actJson["preferred_facilitators"].get<std::vector<std::string>>();
+        act.OtherFacilitators = actJson["other_facilitators"].get<std::vector<std::string>>();
+
+        activities.push_back(act);
+    }
+
+    in.close();
 }
 
-std::vector<Room> Config::ParseRooms(const std::string& path) const
+void Config::ParseRooms(const std::string& path)
 {
-    return std::vector<Room>();
+
 }
 
-std::vector<double> Config::ParseTimes(const std::string& path) const
+void Config::ParseTimes(const std::string& path)
 {
-    return std::vector<double>();
+
 }
 
 const std::vector<Activity>& Config::GetActivities() const

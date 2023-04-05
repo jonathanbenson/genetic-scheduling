@@ -22,9 +22,9 @@ class Config
 
 public :
 
-    std::vector<Activity> ParseActivities(const std::string& path) const;
-    std::vector<Room> ParseRooms(const std::string& path) const;
-    std::vector<double> ParseTimes(const std::string& path) const;
+    void ParseActivities(const std::string& path);
+    void ParseRooms(const std::string& path);
+    void ParseTimes(const std::string& path);
 
     const std::vector<Activity>& GetActivities() const;
     const std::vector<Room>& GetRooms() const;

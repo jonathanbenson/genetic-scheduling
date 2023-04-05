@@ -5,9 +5,9 @@
 int main()
 {
 
-    std::cout << "Hello World!" << std::endl;
-
     Config config;
+
+    config.ParseActivities("./config/activities.json");
 
     return 0;
 }
