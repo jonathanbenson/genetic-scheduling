@@ -56,7 +56,16 @@ void Config::ParseRooms(const std::string& path)
 
 void Config::ParseTimes(const std::string& path)
 {
+    ifstream in(path);
 
+    json j;
+
+    in >> j;
+
+    for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
+        times.push_back(*iter);
+
+    in.close();
 }
 
 const std::vector<Activity>& Config::GetActivities() const

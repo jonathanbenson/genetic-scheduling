@@ -78,7 +78,7 @@ void test_Config_ParseRooms()
     // Assertions for Slater 003
     TEST_ASSERT(rooms.at(0).Name == "Slater 003");
     TEST_ASSERT(rooms.at(0).Capacity == 45);
-    
+
     // Assertions for Roman 216
     TEST_ASSERT(rooms.at(1).Name == "Roman 216");
     TEST_ASSERT(rooms.at(1).Capacity == 30);
@@ -111,5 +111,17 @@ void test_Config_ParseRooms()
     TEST_ASSERT(rooms.at(8).Name == "Frank 119");
     TEST_ASSERT(rooms.at(8).Capacity == 60);
 
+
+}
+
+void test_Config_ParseTimes()
+{
+    Config config;
+
+    config.ParseTimes("./config/times.json");
+
+    std::vector<double> times = config.GetTimes();
+
+    TEST_ASSERT(times == std::vector<double>({10, 11, 12, 13, 14, 15}));
 
 }
