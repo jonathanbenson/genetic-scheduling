@@ -4,6 +4,6 @@
 #include "Config.test.h"
 
 TEST_LIST = {
-   { "example", test_example },
+   { "Config::ParseActivities", test_Config_ParseActivities },
    { NULL, NULL }     /* zeroed record marking the end of the list */
 };
