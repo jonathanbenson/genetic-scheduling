@@ -34,7 +34,24 @@ void Config::ParseActivities(const std::string& path)
 
 void Config::ParseRooms(const std::string& path)
 {
+    ifstream in(path);
 
+    json j;
+
+    in >> j;
+
+    for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
+    {
+        json roomJson = *iter;
+
+        Room room;
+        room.Name = roomJson["name"].get<std::string>();
+        room.Capacity = roomJson["capacity"].get<uint>();
+
+        rooms.push_back(room);
+    }
+
+    in.close();
 }
 
 void Config::ParseTimes(const std::string& path)

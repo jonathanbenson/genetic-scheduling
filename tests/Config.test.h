@@ -3,7 +3,7 @@
 
 #include "Config.h"
 
-void test_Config_ParseActivities(void)
+void test_Config_ParseActivities()
 {
     Config config;
 
@@ -67,3 +67,14 @@ void test_Config_ParseActivities(void)
 
 }
 
+void test_Config_ParseRooms()
+{
+    Config config;
+
+    config.ParseRooms("./config/rooms.json");
+
+    std::vector<Room> rooms = config.GetRooms();
+
+    // Assertions for Slater 003
+    TEST_ASSERT(rooms.at(0).Name == "Slater 003");
+}
