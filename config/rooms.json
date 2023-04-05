@@ -1,0 +1,38 @@
+[
+    {
+        "room": "Slater 003",
+        "capacity": 45
+    },
+    {
+        "room":"Roman 216",
+        "capacity": 30
+    },
+    {
+        "room": "Loft 206",
+        "capacity": 75
+    },
+    {
+        "room": "Roman 201",
+        "capacity": 50
+    },
+    {
+        "room": "Loft 310",
+        "capacity": 108
+    },
+    {
+        "room": "Beach 201",
+        "capacity": 60
+    },
+    {
+        "room": "Beach 301",
+        "capacity": 75
+    },
+    {
+        "room": "Logos 325",
+        "capacity": 450
+    },
+    {
+        "room": "Frank 119",
+        "capacity": 60
+    }
+]
