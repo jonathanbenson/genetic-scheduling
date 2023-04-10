@@ -17,24 +17,7 @@ struct Room
     uint Capacity;
 };
 
-class Config
-{
-
-public :
-
-    void ParseActivities(const std::string& path);
-    void ParseRooms(const std::string& path);
-    void ParseTimes(const std::string& path);
-
-    const std::vector<Activity>& GetActivities() const;
-    const std::vector<Room>& GetRooms() const;
-    const std::vector<double>& GetTimes() const;
-
-private :
-
-    std::vector<Activity> activities;
-    std::vector<Room> rooms;
-    std::vector<double> times;
-
-};
+std::vector<Activity> ParseActivities(const std::string& path);
+std::vector<Room> ParseRooms(const std::string& path);
+std::vector<double> ParseTimes(const std::string& path);
 

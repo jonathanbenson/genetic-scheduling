@@ -5,11 +5,8 @@
 
 void test_Config_ParseActivities()
 {
-    Config config;
 
-    config.ParseActivities("./config/activities.json");
-
-    std::vector<Activity> activities = config.GetActivities();
+    std::vector<Activity> activities = ParseActivities("./config/activities.json");
 
     // Assertions for SLA100
     TEST_ASSERT(activities.at(0).Name == "SLA100");
@@ -69,11 +66,8 @@ void test_Config_ParseActivities()
 
 void test_Config_ParseRooms()
 {
-    Config config;
 
-    config.ParseRooms("./config/rooms.json");
-
-    std::vector<Room> rooms = config.GetRooms();
+    std::vector<Room> rooms = ParseRooms("./config/rooms.json");
 
     // Assertions for Slater 003
     TEST_ASSERT(rooms.at(0).Name == "Slater 003");
@@ -116,12 +110,7 @@ void test_Config_ParseRooms()
 
 void test_Config_ParseTimes()
 {
-    Config config;
-
-    config.ParseTimes("./config/times.json");
-
-    std::vector<double> times = config.GetTimes();
+    std::vector<double> times = ParseTimes("./config/times.json");
 
     TEST_ASSERT(times == std::vector<double>({10, 11, 12, 13, 14, 15}));
-
 }

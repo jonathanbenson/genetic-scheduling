@@ -8,13 +8,15 @@ using json = nlohmann::json;
 using ifstream = std::ifstream;
 using json_arr_iter = nlohmann::json_abi_v3_11_2::detail::iter_impl<nlohmann::json_abi_v3_11_2::json>;
 
-void Config::ParseActivities(const std::string& path)
+std::vector<Activity> ParseActivities(const std::string& path)
 {
     ifstream in(path);
 
     json j;
 
     in >> j;
+
+    std::vector<Activity> activities;
 
     for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
     {
@@ -30,15 +32,19 @@ void Config::ParseActivities(const std::string& path)
     }
 
     in.close();
+
+    return activities;
 }
 
-void Config::ParseRooms(const std::string& path)
+std::vector<Room> ParseRooms(const std::string& path)
 {
     ifstream in(path);
 
     json j;
 
     in >> j;
+
+    std::vector<Room> rooms;
 
     for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
     {
@@ -52,9 +58,11 @@ void Config::ParseRooms(const std::string& path)
     }
 
     in.close();
+
+    return rooms;
 }
 
-void Config::ParseTimes(const std::string& path)
+std::vector<double> ParseTimes(const std::string& path)
 {
     ifstream in(path);
 
@@ -62,23 +70,13 @@ void Config::ParseTimes(const std::string& path)
 
     in >> j;
 
+    std::vector<double> times;
+
     for (json_arr_iter iter = j.begin(); iter != j.end(); ++iter)
         times.push_back(*iter);
 
     in.close();
-}
 
-const std::vector<Activity>& Config::GetActivities() const
-{
-    return activities;
-}
-
-const std::vector<Room>& Config::GetRooms() const
-{
-    return rooms;
-}
-
-const std::vector<double>& Config::GetTimes() const
-{
     return times;
 }
+
