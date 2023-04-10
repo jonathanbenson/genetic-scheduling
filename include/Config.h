@@ -17,7 +17,9 @@ struct Room
     uint Capacity;
 };
 
-std::vector<Activity> ParseActivities(const std::string& path);
+std::pair<std::vector<Activity>, std::vector<std::string>>
+ParseActivitiesAndFacilitators(const std::string& path);
+
 std::vector<Room> ParseRooms(const std::string& path);
 std::vector<double> ParseTimes(const std::string& path);
 

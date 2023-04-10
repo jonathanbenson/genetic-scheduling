@@ -1,12 +1,20 @@
 
-#include "acutest.h"
+#include <algorithm>
 
+#include "acutest.h"
 #include "Config.h"
 
 void test_Config_ParseActivities()
 {
 
-    std::vector<Activity> activities = ParseActivities("./config/activities.json");
+    std::pair<std::vector<Activity>, std::vector<std::string>> activitiesAndFacilitators = ParseActivitiesAndFacilitators("./config/activities.json");
+
+    std::vector<Activity> activities = activitiesAndFacilitators.first;
+    std::vector<std::string> facilitators = activitiesAndFacilitators.second;
+
+    // Assertion for correct parsing of facilitators
+    std::sort(facilitators.begin(), facilitators.end());
+    TEST_ASSERT(facilitators == std::vector<std::string>({"Banks", "Glen", "Lock", "Numen", "Richards", "Shaw", "Singer", "Tyler", "Uther", "Zeldin"}));
 
     // Assertions for SLA100
     TEST_ASSERT(activities.at(0).Name == "SLA100");
