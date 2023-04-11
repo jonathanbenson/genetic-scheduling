@@ -110,6 +110,7 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                 std::string fName = activities.at(f.ActivityIndex).Name;
                 std::string fSection = activities.at(f.ActivityIndex).Section;
                 double fTime = times.at(f.TimeIndex);
+                std::string fRoomName = rooms.at(f.RoomIndex).Name;
 
                 if (eSection != fSection)
                 {
@@ -143,12 +144,11 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                     // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
                     if (e.TimeIndex - f.TimeIndex == 1)
                     {
-                        if (false)
-                        {
-                            // TODO:
-                            //     In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
-                            //         It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
-                        }
+                        // In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
+                        //      It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
+                        if (((eRoomName == "Beach" || eRoomName == "Roman") && !(fRoomName == "Beach" || fRoomName == "Roman"))
+                            && (!(eRoomName == "Beach" || eRoomName == "Roman") && (fRoomName == "Beach" || fRoomName == "Roman")))
+                            fitness -= .4;
                         else
                             fitness += .5;
                     }
