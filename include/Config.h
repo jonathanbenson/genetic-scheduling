@@ -7,7 +7,7 @@ struct Activity
 {
     std::string Name;
     std::string Section;
-    uint ExpectedEnrollment;
+    size_t ExpectedEnrollment;
     std::vector<std::string> PreferredFacilitators;
     std::vector<std::string> OtherFacilitators;
 };
@@ -15,7 +15,8 @@ struct Activity
 struct Room
 {
     std::string Name;
-    uint Capacity;
+    size_t Number;
+    size_t Capacity;
 };
 
 std::pair<std::vector<Activity>, std::vector<std::string>>

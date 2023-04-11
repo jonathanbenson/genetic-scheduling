@@ -33,7 +33,7 @@ std::pair<std::vector<Activity>, std::vector<std::string>> ParseActivitiesAndFac
         Activity act;
         act.Name = actJson["name"].get<std::string>();
         act.Section = actJson["section"].get<std::string>();
-        act.ExpectedEnrollment = actJson["expected_enrollment"].get<uint>();
+        act.ExpectedEnrollment = actJson["expected_enrollment"].get<size_t>();
         act.PreferredFacilitators = actJson["preferred_facilitators"].get<std::vector<std::string>>();
         act.OtherFacilitators = actJson["other_facilitators"].get<std::vector<std::string>>();
 
@@ -75,7 +75,8 @@ std::vector<Room> ParseRooms(const std::string& path)
 
         Room room;
         room.Name = roomJson["name"].get<std::string>();
-        room.Capacity = roomJson["capacity"].get<uint>();
+        room.Number = roomJson["number"].get<size_t>();
+        room.Capacity = roomJson["capacity"].get<size_t>();
 
         rooms.push_back(room);
     }

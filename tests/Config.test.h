@@ -142,39 +142,48 @@ void test_Config_ParseRooms()
     std::vector<Room> rooms = ParseRooms("./config/rooms.json");
 
     // Assertions for Slater 003
-    TEST_ASSERT(rooms.at(0).Name == "Slater 003");
+    TEST_ASSERT(rooms.at(0).Name == "Slater");
+    TEST_ASSERT(rooms.at(0).Number == 3);
     TEST_ASSERT(rooms.at(0).Capacity == 45);
 
     // Assertions for Roman 216
-    TEST_ASSERT(rooms.at(1).Name == "Roman 216");
+    TEST_ASSERT(rooms.at(1).Name == "Roman");
+    TEST_ASSERT(rooms.at(1).Number == 216);
     TEST_ASSERT(rooms.at(1).Capacity == 30);
 
     // Assertions for Loft 206
-    TEST_ASSERT(rooms.at(2).Name == "Loft 206");
+    TEST_ASSERT(rooms.at(2).Name == "Loft");
+    TEST_ASSERT(rooms.at(2).Number == 206);
     TEST_ASSERT(rooms.at(2).Capacity == 75);
 
     // Assertions for Roman 201
-    TEST_ASSERT(rooms.at(3).Name == "Roman 201");
+    TEST_ASSERT(rooms.at(3).Name == "Roman");
+    TEST_ASSERT(rooms.at(3).Number == 201);
     TEST_ASSERT(rooms.at(3).Capacity == 50);
 
     // Assertions for Loft 310
-    TEST_ASSERT(rooms.at(4).Name == "Loft 310");
+    TEST_ASSERT(rooms.at(4).Name == "Loft");
+    TEST_ASSERT(rooms.at(4).Number == 310);
     TEST_ASSERT(rooms.at(4).Capacity == 108);
 
     // Assertions for Beach 201
-    TEST_ASSERT(rooms.at(5).Name == "Beach 201");
+    TEST_ASSERT(rooms.at(5).Name == "Beach");
+    TEST_ASSERT(rooms.at(5).Number == 201);
     TEST_ASSERT(rooms.at(5).Capacity == 60);
 
     // Assertions for Beach 301
-    TEST_ASSERT(rooms.at(6).Name == "Beach 301");
+    TEST_ASSERT(rooms.at(6).Name == "Beach");
+    TEST_ASSERT(rooms.at(6).Number == 301);
     TEST_ASSERT(rooms.at(6).Capacity == 75);
 
     // Assertions for Logos 325
-    TEST_ASSERT(rooms.at(7).Name == "Logos 325");
+    TEST_ASSERT(rooms.at(7).Name == "Logos");
+    TEST_ASSERT(rooms.at(7).Number == 325);
     TEST_ASSERT(rooms.at(7).Capacity == 450);
 
     // Assertions for Frank 119
-    TEST_ASSERT(rooms.at(8).Name == "Frank 119");
+    TEST_ASSERT(rooms.at(8).Name == "Frank");
+    TEST_ASSERT(rooms.at(8).Number == 119);
     TEST_ASSERT(rooms.at(8).Capacity == 60);
 
 
