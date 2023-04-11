@@ -1,108 +1,126 @@
 [
     {
-        "name": "SLA100A",
+        "name": "SLA100",
+        "section": "A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA100B",
+        "name": "SLA100",
+        "section": "B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA191A",
+        "name": "SLA191",
+        "section": "A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA191B",
+        "name": "SLA191",
+        "section": "B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA201A",
+        "name": "SLA201",
+        "section": "A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Banks", "Zeldin", "Shaw"],
         "other_facilitators": ["Numen", "Richards", "Singer"]
     },
     {
-        "name": "SLA201B",
+        "name": "SLA201",
+        "section": "B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Banks", "Zeldin", "Shaw"],
         "other_facilitators": ["Numen", "Richards", "Singer"]
     },
     {
-        "name": "SLA291A",
+        "name": "SLA291",
+        "section": "A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Lock", "Banks", "Zeldin", "Singer"],
         "other_facilitators": ["Numen", "Richards", "Shaw", "Tyler"]
     },
     {
-        "name": "SLA291B",
+        "name": "SLA291",
+        "section": "B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Lock", "Banks", "Zeldin", "Singer"],
         "other_facilitators": ["Numen", "Richards", "Shaw", "Tyler"]
     },
     {
-        "name": "SLA303A",
+        "name": "SLA303",
+        "section": "A",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Glen", "Zeldin", "Banks"],
         "other_facilitators": ["Numen", "Singer", "Shaw"]
     },
     {
-        "name": "SLA303B",
+        "name": "SLA303",
+        "section": "B",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Glen", "Zeldin", "Banks"],
         "other_facilitators": ["Numen", "Singer", "Shaw"]
     },
     {
-        "name": "SLA304A",
+        "name": "SLA304",
+        "section": "A",
         "expected_enrollment": 25,
         "preferred_facilitators": ["Glen", "Banks", "Tyler"],
         "other_facilitators": ["Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"]
     },
     {
-        "name": "SLA304B",
+        "name": "SLA304",
+        "section": "B",
         "expected_enrollment": 25,
         "preferred_facilitators": ["Glen", "Banks", "Tyler"],
         "other_facilitators": ["Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"]
     },
     {
-        "name": "SLA394A",
+        "name": "SLA394",
+        "section": "A",
         "expected_enrollment": 20,
         "preferred_facilitators": ["Tyler", "Singer"],
         "other_facilitators": ["Richards", "Zeldin"]
     },
     {
-        "name": "SLA394B",
+        "name": "SLA394",
+        "section": "B",
         "expected_enrollment": 20,
         "preferred_facilitators": ["Tyler", "Singer"],
         "other_facilitators": ["Richards", "Zeldin"]
     },
     {
-        "name": "SLA449A",
+        "name": "SLA449",
+        "section": "A",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther"]
     },
     {
-        "name": "SLA449B",
+        "name": "SLA449",
+        "section": "B",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther"]
     },
     {
-        "name": "SLA451A",
+        "name": "SLA451",
+        "section": "A",
         "expected_enrollment": 100,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther", "Richards", "Banks"]
     },
     {
-        "name": "SLA451B",
+        "name": "SLA451",
+        "section": "B",
         "expected_enrollment": 100,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther", "Richards", "Banks"]

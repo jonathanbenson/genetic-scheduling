@@ -32,6 +32,7 @@ std::pair<std::vector<Activity>, std::vector<std::string>> ParseActivitiesAndFac
         // parse activity
         Activity act;
         act.Name = actJson["name"].get<std::string>();
+        act.Section = actJson["section"].get<std::string>();
         act.ExpectedEnrollment = actJson["expected_enrollment"].get<uint>();
         act.PreferredFacilitators = actJson["preferred_facilitators"].get<std::vector<std::string>>();
         act.OtherFacilitators = actJson["other_facilitators"].get<std::vector<std::string>>();
@@ -89,7 +90,7 @@ std::vector<double> ParseTimes(const std::string& path)
     /*
     Parses times into a list of doubles
     */
-   
+
     ifstream in(path);
 
     json j;

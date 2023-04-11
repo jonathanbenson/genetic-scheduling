@@ -6,6 +6,7 @@
 struct Activity
 {
     std::string Name;
+    std::string Section;
     uint ExpectedEnrollment;
     std::vector<std::string> PreferredFacilitators;
     std::vector<std::string> OtherFacilitators;
