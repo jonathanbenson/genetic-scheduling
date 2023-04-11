@@ -25,7 +25,7 @@ struct FacilitatorLoadInfo
     size_t NumConsecutive;
 };
 
-int FacilitatorLoad(const Schedule& s, int facilitatorIndex);
+FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id);
 
 double Fitness(const Schedule& s, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators);
 
