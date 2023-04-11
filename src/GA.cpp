@@ -92,35 +92,82 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
 
     for (Event e : s.events)
     {
-        const Activity& activity = activities.at(e.ActivityIndex);
-        const Room& room = rooms.at(e.RoomIndex);
-
-        // penalize if event is scheduled at the same time in the same room as another one of the events
         for (Event f : s.events)
         {
-            if ((e.ActivityIndex != f.ActivityIndex) && (e.RoomIndex == f.RoomIndex) && (e.TimeIndex == f.TimeIndex))
-                fitness -= .5;
+            if (e.ActivityIndex != f.ActivityIndex)
+            {
+                // penalize if event is scheduled at the same time in the same room as another one of the events
+                if ((e.RoomIndex == f.RoomIndex) && (e.TimeIndex == f.TimeIndex))
+                    fitness -= .5;
 
-            
+                
+                // activity-specific
+                std::string eName = activities.at(e.ActivityIndex).Name;
+                std::string eSection = activities.at(e.ActivityIndex).Section;
+                double eTime = times.at(e.TimeIndex);
+                std::string eRoomName = rooms.at(e.RoomIndex).Name;
+                
+                std::string fName = activities.at(f.ActivityIndex).Name;
+                std::string fSection = activities.at(f.ActivityIndex).Section;
+                double fTime = times.at(f.TimeIndex);
 
-            // activity-specific
+                if (eSection != fSection)
+                {
+                    if (eName == "SLA101" && fName == "SLA101")
+                    {
+                        // The 2 sections of SLA 101 are more than 4 hours apart: + 0.5
+                        if (std::abs(eTime - fTime) > 4)
+                            fitness += .5;
 
-            // The 2 sections of SLA 101 are more than 4 hours apart: + 0.5
+                        // Both sections of SLA 101 are in the same time slot: -0.5
+                        if (e.TimeIndex == f.TimeIndex)
+                            fitness -= .5;
+                    }
 
-            // Both sections of SLA 101 are in the same time slot: -0.5
+                    if (eName == "SLA191" && fName == "SLA191")
+                    {
+                        // The 2 sections of SLA 191 are more than 4 hours apart: + 0.5
+                        if (std::abs(eTime - fTime) > 4)
+                            fitness += .5;
 
-            // The 2 sections of SLA 191 are more than 4 hours apart: + 0.5
+                        // Both sections of SLA 191 are in the same time slot: -0.5
+                        if (e.TimeIndex == f.TimeIndex)
+                            fitness -= .5;
+                    }
 
-            // Both sections of SLA 191 are in the same time slot: -0.5
+                }
 
-            // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
-            //     In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
-            //         It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
 
-            // A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
-            
-            // A section of SLA 191 and a section of SLA 101 are taught in the same time slot: -0.25
+                if (eName == "SLA191" && fName == "SLA101")
+                {
+                    // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
+                    if (e.TimeIndex - f.TimeIndex == 1)
+                    {
+                        if (false)
+                        {
+                            // TODO:
+                            //     In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
+                            //         It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
+                        }
+                        else
+                            fitness += .5;
+                    }
+                    // A section of SLA 191 and a section of SLA 101 are taught in the same time slot: -0.25
+                    else if (e.TimeIndex == f.TimeIndex)
+                        fitness -= .25;
+                    
+                    // A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
+                    if (eTime - fTime == 1.0)
+                        fitness += .25;
+
+                }
+                
+
+            }
         }
+
+        const Activity& activity = activities.at(e.ActivityIndex);
+        const Room& room = rooms.at(e.RoomIndex);
 
         /*
         Room size:
