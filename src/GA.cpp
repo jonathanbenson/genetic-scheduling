@@ -133,11 +133,19 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
         Activity facilitator is scheduled for only 1 activity in this time slot: + 0.2
         Activity facilitator is scheduled for more than one activity at the same time: - 0.2
         Facilitator is scheduled to oversee more than 4 activities total: -0.5
+        If any facilitator scheduled for consecutive time slots: + .25
     */
     for (int facilitatorIndex = 0; facilitatorIndex < facilitators.size(); facilitatorIndex++)
     {
         FacilitatorLoadInfo info = GetFacilitatorLoadInfo(s, facilitatorIndex);
 
+        fitness += (info.NumNonConflicts * .2);
+        fitness -= (info.NumConflicts * .2);
+
+        if (info.Total > 4)
+            fitness -= .5;
+
+        fitness += (info.NumConsecutive * .25);
         
     }
 
