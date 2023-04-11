@@ -240,17 +240,12 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
 
 }
 
-Schedule TournamentSelect(const std::vector<Schedule>& population, int n)
+std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators)
 {
+    std::vector<double> fitnesses;
 
-}
+    for (Schedule schedule : population)
+        fitnesses.push_back(Fitness(schedule, activities, rooms, times, facilitators));
 
-Schedule Crossover(const Schedule& p, const Schedule& q)
-{
-
-}
-
-void Mutate(double mutationRate)
-{
-
+    return fitnesses;
 }

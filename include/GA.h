@@ -34,10 +34,12 @@ std::vector<double> Softmax(const std::vector<double>& input);
 
 double Fitness(const Schedule& s, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators);
 
-Schedule TournamentSelect(const std::vector<Schedule>& population, int n);
+std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators);
 
-Schedule Crossover(const Schedule& p, const Schedule& q);
+std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int n);
 
-void Mutate(double mutationRate);
+std::vector<Schedule> Crossover(const std::vector<Schedule>& population);
+
+std::vector<Schedule> Mutate(const std::vector<Schedule>& population);
 
 #endif

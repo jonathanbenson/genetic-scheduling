@@ -1,5 +1,5 @@
 
-g++ -Iinclude/ main.cpp src/Config.cpp -o a
+g++ -Iinclude/ main.cpp src/Config.cpp src/GA.cpp -o a
 
 ./a
 
