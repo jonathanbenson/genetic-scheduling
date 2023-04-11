@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <map>
 #include <set>
+#include <cmath>
 #include "GA.h"
 
 
@@ -82,6 +83,25 @@ FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id
     // Return the output struct
     return info;
 }
+
+// Convert a vector of doubles to a probability distribution using softmax algorithm
+std::vector<double> Softmax(const std::vector<double>& input) {
+    std::vector<double> output;
+    double sum = 0.0;
+
+    // Calculate the sum of exponential of each input element
+    for (int i = 0; i < input.size(); i++) {
+        sum += std::exp(input[i]);
+    }
+
+    // Calculate the probability distribution by dividing each exponential by the sum
+    for (int i = 0; i < input.size(); i++) {
+        output.push_back(std::exp(input[i]) / sum);
+    }
+
+    return output;
+}
+
 
 
 

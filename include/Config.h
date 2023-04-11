@@ -1,4 +1,7 @@
 
+#ifndef CONFIG_H
+#define CONFIG_H
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -25,3 +28,4 @@ ParseActivitiesAndFacilitators(const std::string& path);
 std::vector<Room> ParseRooms(const std::string& path);
 std::vector<double> ParseTimes(const std::string& path);
 
+#endif
