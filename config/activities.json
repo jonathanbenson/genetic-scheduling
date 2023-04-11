@@ -1,54 +1,108 @@
 [
     {
-        "name": "SLA100",
+        "name": "SLA100A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA191",
+        "name": "SLA100B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA201",
+        "name": "SLA191A",
+        "expected_enrollment": 50,
+        "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
+        "other_facilitators": ["Numen", "Richards"]
+    },
+    {
+        "name": "SLA191B",
+        "expected_enrollment": 50,
+        "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
+        "other_facilitators": ["Numen", "Richards"]
+    },
+    {
+        "name": "SLA201A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Banks", "Zeldin", "Shaw"],
         "other_facilitators": ["Numen", "Richards", "Singer"]
     },
     {
-        "name": "SLA291",
+        "name": "SLA201B",
+        "expected_enrollment": 50,
+        "preferred_facilitators": ["Glen", "Banks", "Zeldin", "Shaw"],
+        "other_facilitators": ["Numen", "Richards", "Singer"]
+    },
+    {
+        "name": "SLA291A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Lock", "Banks", "Zeldin", "Singer"],
         "other_facilitators": ["Numen", "Richards", "Shaw", "Tyler"]
     },
     {
-        "name": "SLA303",
+        "name": "SLA291B",
+        "expected_enrollment": 50,
+        "preferred_facilitators": ["Lock", "Banks", "Zeldin", "Singer"],
+        "other_facilitators": ["Numen", "Richards", "Shaw", "Tyler"]
+    },
+    {
+        "name": "SLA303A",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Glen", "Zeldin", "Banks"],
         "other_facilitators": ["Numen", "Singer", "Shaw"]
     },
     {
-        "name": "SLA304",
+        "name": "SLA303B",
+        "expected_enrollment": 60,
+        "preferred_facilitators": ["Glen", "Zeldin", "Banks"],
+        "other_facilitators": ["Numen", "Singer", "Shaw"]
+    },
+    {
+        "name": "SLA304A",
         "expected_enrollment": 25,
         "preferred_facilitators": ["Glen", "Banks", "Tyler"],
         "other_facilitators": ["Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"]
     },
     {
-        "name": "SLA394",
+        "name": "SLA304B",
+        "expected_enrollment": 25,
+        "preferred_facilitators": ["Glen", "Banks", "Tyler"],
+        "other_facilitators": ["Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"]
+    },
+    {
+        "name": "SLA394A",
         "expected_enrollment": 20,
         "preferred_facilitators": ["Tyler", "Singer"],
         "other_facilitators": ["Richards", "Zeldin"]
     },
     {
-        "name": "SLA449",
+        "name": "SLA394B",
+        "expected_enrollment": 20,
+        "preferred_facilitators": ["Tyler", "Singer"],
+        "other_facilitators": ["Richards", "Zeldin"]
+    },
+    {
+        "name": "SLA449A",
         "expected_enrollment": 60,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther"]
     },
     {
-        "name": "SLA451",
+        "name": "SLA449B",
+        "expected_enrollment": 60,
+        "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
+        "other_facilitators": ["Zeldin", "Uther"]
+    },
+    {
+        "name": "SLA451A",
+        "expected_enrollment": 100,
+        "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
+        "other_facilitators": ["Zeldin", "Uther", "Richards", "Banks"]
+    },
+    {
+        "name": "SLA451B",
         "expected_enrollment": 100,
         "preferred_facilitators": ["Tyler", "Singer", "Shaw"],
         "other_facilitators": ["Zeldin", "Uther", "Richards", "Banks"]

@@ -16,59 +16,114 @@ void test_Config_ParseActivities()
     std::sort(facilitators.begin(), facilitators.end());
     TEST_ASSERT(facilitators == std::vector<std::string>({"Banks", "Glen", "Lock", "Numen", "Richards", "Shaw", "Singer", "Tyler", "Uther", "Zeldin"}));
 
-    // Assertions for SLA100
-    TEST_ASSERT(activities.at(0).Name == "SLA100");
+    // Assertions for SLA100A
+    TEST_ASSERT(activities.at(0).Name == "SLA100A");
     TEST_ASSERT(activities.at(0).ExpectedEnrollment == 50);
     TEST_ASSERT(activities.at(0).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
     TEST_ASSERT(activities.at(0).OtherFacilitators == std::vector<std::string>({"Numen", "Richards"}));
 
-    // Assertions for SLA191
-    TEST_ASSERT(activities.at(1).Name == "SLA191");
+    // Assertions for SLA100B
+    TEST_ASSERT(activities.at(1).Name == "SLA100B");
     TEST_ASSERT(activities.at(1).ExpectedEnrollment == 50);
     TEST_ASSERT(activities.at(1).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
     TEST_ASSERT(activities.at(1).OtherFacilitators == std::vector<std::string>({"Numen", "Richards"}));
 
-    // Assertions for SLA201
-    TEST_ASSERT(activities.at(2).Name == "SLA201");
+    // Assertions for SLA191A
+    TEST_ASSERT(activities.at(2).Name == "SLA191A");
     TEST_ASSERT(activities.at(2).ExpectedEnrollment == 50);
-    TEST_ASSERT(activities.at(2).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Zeldin", "Shaw"}));
-    TEST_ASSERT(activities.at(2).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Singer"}));
+    TEST_ASSERT(activities.at(2).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
+    TEST_ASSERT(activities.at(2).OtherFacilitators == std::vector<std::string>({"Numen", "Richards"}));
 
-    // Assertions for SLA291
-    TEST_ASSERT(activities.at(3).Name == "SLA291");
+    // Assertions for SLA191B
+    TEST_ASSERT(activities.at(3).Name == "SLA191B");
     TEST_ASSERT(activities.at(3).ExpectedEnrollment == 50);
-    TEST_ASSERT(activities.at(3).PreferredFacilitators == std::vector<std::string>({"Lock", "Banks", "Zeldin", "Singer"}));
-    TEST_ASSERT(activities.at(3).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Shaw", "Tyler"}));
+    TEST_ASSERT(activities.at(3).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
+    TEST_ASSERT(activities.at(3).OtherFacilitators == std::vector<std::string>({"Numen", "Richards"}));
 
-    // Assertions for SLA303
-    TEST_ASSERT(activities.at(4).Name == "SLA303");
-    TEST_ASSERT(activities.at(4).ExpectedEnrollment == 60);
-    TEST_ASSERT(activities.at(4).PreferredFacilitators == std::vector<std::string>({"Glen", "Zeldin", "Banks"}));
-    TEST_ASSERT(activities.at(4).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw"}));
+    // Assertions for SLA201A
+    TEST_ASSERT(activities.at(4).Name == "SLA201A");
+    TEST_ASSERT(activities.at(4).ExpectedEnrollment == 50);
+    TEST_ASSERT(activities.at(4).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Zeldin", "Shaw"}));
+    TEST_ASSERT(activities.at(4).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Singer"}));
 
-    // Assertions for SLA304
-    TEST_ASSERT(activities.at(5).Name == "SLA304");
-    TEST_ASSERT(activities.at(5).ExpectedEnrollment == 25);
-    TEST_ASSERT(activities.at(5).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Tyler"}));
-    TEST_ASSERT(activities.at(5).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"}));
+    // Assertions for SLA201B
+    TEST_ASSERT(activities.at(5).Name == "SLA201B");
+    TEST_ASSERT(activities.at(5).ExpectedEnrollment == 50);
+    TEST_ASSERT(activities.at(5).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Zeldin", "Shaw"}));
+    TEST_ASSERT(activities.at(5).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Singer"}));
 
-    // Assertions for SLA394
-    TEST_ASSERT(activities.at(6).Name == "SLA394");
-    TEST_ASSERT(activities.at(6).ExpectedEnrollment == 20);
-    TEST_ASSERT(activities.at(6).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer"}));
-    TEST_ASSERT(activities.at(6).OtherFacilitators == std::vector<std::string>({"Richards", "Zeldin"}));
+    // Assertions for SLA291A
+    TEST_ASSERT(activities.at(6).Name == "SLA291A");
+    TEST_ASSERT(activities.at(6).ExpectedEnrollment == 50);
+    TEST_ASSERT(activities.at(6).PreferredFacilitators == std::vector<std::string>({"Lock", "Banks", "Zeldin", "Singer"}));
+    TEST_ASSERT(activities.at(6).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Shaw", "Tyler"}));
 
-    // Assertions for SLA449
-    TEST_ASSERT(activities.at(7).Name == "SLA449");
-    TEST_ASSERT(activities.at(7).ExpectedEnrollment == 60);
-    TEST_ASSERT(activities.at(7).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
-    TEST_ASSERT(activities.at(7).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther"}));
+    // Assertions for SLA291B
+    TEST_ASSERT(activities.at(7).Name == "SLA291B");
+    TEST_ASSERT(activities.at(7).ExpectedEnrollment == 50);
+    TEST_ASSERT(activities.at(7).PreferredFacilitators == std::vector<std::string>({"Lock", "Banks", "Zeldin", "Singer"}));
+    TEST_ASSERT(activities.at(7).OtherFacilitators == std::vector<std::string>({"Numen", "Richards", "Shaw", "Tyler"}));
 
-    // Assertions for SLA451
-    TEST_ASSERT(activities.at(8).Name == "SLA451");
-    TEST_ASSERT(activities.at(8).ExpectedEnrollment == 100);
-    TEST_ASSERT(activities.at(8).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
-    TEST_ASSERT(activities.at(8).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther", "Richards", "Banks"}));
+    // Assertions for SLA303A
+    TEST_ASSERT(activities.at(8).Name == "SLA303A");
+    TEST_ASSERT(activities.at(8).ExpectedEnrollment == 60);
+    TEST_ASSERT(activities.at(8).PreferredFacilitators == std::vector<std::string>({"Glen", "Zeldin", "Banks"}));
+    TEST_ASSERT(activities.at(8).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw"}));
+
+    // Assertions for SLA303B
+    TEST_ASSERT(activities.at(9).Name == "SLA303B");
+    TEST_ASSERT(activities.at(9).ExpectedEnrollment == 60);
+    TEST_ASSERT(activities.at(9).PreferredFacilitators == std::vector<std::string>({"Glen", "Zeldin", "Banks"}));
+    TEST_ASSERT(activities.at(9).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw"}));
+
+    // Assertions for SLA304A
+    TEST_ASSERT(activities.at(10).Name == "SLA304A");
+    TEST_ASSERT(activities.at(10).ExpectedEnrollment == 25);
+    TEST_ASSERT(activities.at(10).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Tyler"}));
+    TEST_ASSERT(activities.at(10).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"}));
+
+    // Assertions for SLA304B
+    TEST_ASSERT(activities.at(11).Name == "SLA304B");
+    TEST_ASSERT(activities.at(11).ExpectedEnrollment == 25);
+    TEST_ASSERT(activities.at(11).PreferredFacilitators == std::vector<std::string>({"Glen", "Banks", "Tyler"}));
+    TEST_ASSERT(activities.at(11).OtherFacilitators == std::vector<std::string>({"Numen", "Singer", "Shaw", "Richards", "Uther", "Zeldin"}));
+
+    // Assertions for SLA394A
+    TEST_ASSERT(activities.at(12).Name == "SLA394A");
+    TEST_ASSERT(activities.at(12).ExpectedEnrollment == 20);
+    TEST_ASSERT(activities.at(12).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer"}));
+    TEST_ASSERT(activities.at(12).OtherFacilitators == std::vector<std::string>({"Richards", "Zeldin"}));
+
+    // Assertions for SLA394B
+    TEST_ASSERT(activities.at(13).Name == "SLA394B");
+    TEST_ASSERT(activities.at(13).ExpectedEnrollment == 20);
+    TEST_ASSERT(activities.at(13).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer"}));
+    TEST_ASSERT(activities.at(13).OtherFacilitators == std::vector<std::string>({"Richards", "Zeldin"}));
+
+    // Assertions for SLA449A
+    TEST_ASSERT(activities.at(14).Name == "SLA449A");
+    TEST_ASSERT(activities.at(14).ExpectedEnrollment == 60);
+    TEST_ASSERT(activities.at(14).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
+    TEST_ASSERT(activities.at(14).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther"}));
+
+    // Assertions for SLA449B
+    TEST_ASSERT(activities.at(15).Name == "SLA449B");
+    TEST_ASSERT(activities.at(15).ExpectedEnrollment == 60);
+    TEST_ASSERT(activities.at(15).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
+    TEST_ASSERT(activities.at(15).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther"}));
+
+    // Assertions for SLA451A
+    TEST_ASSERT(activities.at(16).Name == "SLA451A");
+    TEST_ASSERT(activities.at(16).ExpectedEnrollment == 100);
+    TEST_ASSERT(activities.at(16).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
+    TEST_ASSERT(activities.at(16).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther", "Richards", "Banks"}));
+
+    // Assertions for SLA451B
+    TEST_ASSERT(activities.at(17).Name == "SLA451B");
+    TEST_ASSERT(activities.at(17).ExpectedEnrollment == 100);
+    TEST_ASSERT(activities.at(17).PreferredFacilitators == std::vector<std::string>({"Tyler", "Singer", "Shaw"}));
+    TEST_ASSERT(activities.at(17).OtherFacilitators == std::vector<std::string>({"Zeldin", "Uther", "Richards", "Banks"}));
+
 
 }
 
