@@ -182,7 +182,7 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
     return parents;
 }
 
-std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
+std::vector<Schedule> PointCrossover(const std::vector<Schedule>& parents)
 {
     std::vector<Schedule> newPopulation;
 
@@ -205,9 +205,9 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 
         int numEvents = lover1.events.size();
 
-        int mid = RandomIndex(numEvents);
+        int point = RandomIndex(numEvents);
 
-        for (int j = 0; j < mid; ++j)
+        for (int j = 0; j < point; ++j)
         {
             child.events.push_back(Event());
 
@@ -222,7 +222,7 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 
         }
 
-        for (int j = mid; j < numEvents; ++j)
+        for (int j = point; j < numEvents; ++j)
         {
             child.events.push_back(Event());
 

@@ -6,10 +6,10 @@
 #include "Config.h"
 #include "GA.h"
 
-#define POPULATION_SIZE 100
+#define POPULATION_SIZE 500
 #define NUM_GENERATIONS 100
 #define TOURNAMENT_SELECTION_SAMPLE_SIZE 5
-#define MUTATION_RATE .01
+#define INIT_MUTATION_RATE 1
 
 int main()
 {
@@ -33,7 +33,7 @@ int main()
     std::vector<Schedule> generation = InitPopulation(activities.size(), rooms.size(), times.size(), facilitators.size(), POPULATION_SIZE);
 
     // run the GA
-    for (int n = 0; n < NUM_GENERATIONS; ++n)
+    for (int n = 1; n <= NUM_GENERATIONS; ++n)
     {
 
         // compute fitness of current generation
@@ -42,16 +42,18 @@ int main()
         // output current generation and average fitness
         double averageFitness = AverageFitness(fitnesses);
 
-        std::cout << "Generation: " << n + 1 << ", Avg. Fitness: " << averageFitness << std::endl;
+        std::cout << "Generation: " << n << ", Avg. Fitness: " << averageFitness << std::endl;
 
         // select best candidates for crossover
         std::vector<Schedule> bestCandidates = TournamentSelect(generation, fitnesses, TOURNAMENT_SELECTION_SAMPLE_SIZE);
 
         // crossover new generation
-        generation = UniformCrossover(bestCandidates);
+        generation = PointCrossover(bestCandidates);
 
         // mutate new generation
-        generation = Mutate(generation, rooms.size(), times.size(), facilitators.size(), MUTATION_RATE);
+        generation = Mutate(generation, rooms.size(), times.size(), facilitators.size(), INIT_MUTATION_RATE / n);
+
+
 
     }
 
