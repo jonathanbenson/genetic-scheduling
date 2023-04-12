@@ -185,7 +185,7 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                 if (eName == "SLA191" && fName == "SLA101")
                 {
                     // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
-                    if (e.TimeIndex - f.TimeIndex == 1)
+                    if (abs(e.TimeIndex - f.TimeIndex) == 1)
                     {
                         // In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
                         //      It’s fine if neither is in one of those buildings, of activity; we just want to avoid having consecutive activities being widely separated.
@@ -200,7 +200,7 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                         fitness -= .25;
                     
                     // A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
-                    if (eTime - fTime == 1.0)
+                    if (std::abs(eTime - fTime) - 1.0 < .01)
                         fitness += .25;
 
                 }
