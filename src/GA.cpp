@@ -328,9 +328,9 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
         // get candidate with max fitness
         int bestCandidateIndex = candidateIndices.at(0);
 
-        for (int k = 1; k < candidateIndices.size(); k++)
+        for (int j = 1; j < k; j++)
         {
-            int nextCandidateIndex = candidateIndices.at(k);
+            int nextCandidateIndex = candidateIndices.at(j);
 
             if (fitnesses.at(nextCandidateIndex) > fitnesses.at(bestCandidateIndex))
                 bestCandidateIndex = nextCandidateIndex;
@@ -364,18 +364,37 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 
         Schedule child;
 
-        for (int j = 0; j < lover1.events.size(); ++j)
+        int numEvents = lover1.events.size();
+
+        int mid = RandomIndex(numEvents);
+
+        for (int j = 0; j < mid; ++j)
         {
             child.events.push_back(Event());
 
             // crossover room
-            child.events.back().RoomIndex = CoinFlip() ? lover1.events.at(j).RoomIndex : lover2.events.at(j).RoomIndex;
+            child.events.back().RoomIndex = lover1.events.at(j).RoomIndex;
 
             // crossover facilitator
-            child.events.back().FacilitatorIndex = CoinFlip() ? lover1.events.at(j).FacilitatorIndex : lover2.events.at(j).FacilitatorIndex;
+            child.events.back().FacilitatorIndex = lover1.events.at(j).FacilitatorIndex;
 
             // crossover time
-            child.events.back().TimeIndex = CoinFlip() ? lover1.events.at(j).TimeIndex : lover2.events.at(j).TimeIndex;
+            child.events.back().TimeIndex = lover1.events.at(j).TimeIndex;
+
+        }
+
+        for (int j = mid; j < numEvents; ++j)
+        {
+            child.events.push_back(Event());
+
+            // crossover room
+            child.events.back().RoomIndex = lover2.events.at(j).RoomIndex;
+
+            // crossover facilitator
+            child.events.back().FacilitatorIndex = lover2.events.at(j).FacilitatorIndex;
+
+            // crossover time
+            child.events.back().TimeIndex = lover2.events.at(j).TimeIndex;
 
         }
 
