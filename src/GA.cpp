@@ -6,6 +6,14 @@
 #include <random>
 #include "GA.h"
 
+double AverageFitness(const std::vector<double>& v) {
+  if (v.empty()) return 0.0;
+  double sum = 0.0;
+  for (double d : v) {
+    sum += d;
+  }
+  return sum / v.size();
+}
 
 FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id)
 {
@@ -95,7 +103,7 @@ bool CoinFlip(double threshold) {
 int RandomIndex(int n) {
   std::random_device rd;  // obtain a random number from hardware
   std::mt19937 gen(rd());  // seed the generator
-  std::uniform_int_distribution<> distr(0, n);  // define the range
+  std::uniform_int_distribution<> distr(0, n - 1);  // define the range
   return distr(gen);  // generate and return the random integer
 }
 
@@ -267,7 +275,7 @@ std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const 
     return fitnesses;
 }
 
-std::vector<Schedule> InitPopulation(const std::vector<Activity>& activities, int numRooms, int numTimes, int numFacilitators, int n)
+std::vector<Schedule> InitPopulation(int numActivities, int numRooms, int numTimes, int numFacilitators, int n)
 {
     std::vector<Schedule> initPopulation;
 
@@ -275,7 +283,7 @@ std::vector<Schedule> InitPopulation(const std::vector<Activity>& activities, in
     {
         Schedule newSchedule;
 
-        for (int j = 0; j < activities.size(); ++j)
+        for (int j = 0; j < numActivities; ++j)
         {
             Event newEvent;
 
@@ -293,7 +301,7 @@ std::vector<Schedule> InitPopulation(const std::vector<Activity>& activities, in
     return initPopulation;
 }
 
-std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int n)
+std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int k)
 {
     // get vector of population indices for later code
     std::vector<int> populationIndices;
@@ -313,7 +321,7 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
             populationIndices.begin(),
             populationIndices.end(),
             std::back_inserter(candidateIndices),
-            n,
+            k,
             std::mt19937{std::random_device{}()}
         );
 
