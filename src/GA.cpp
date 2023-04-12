@@ -92,6 +92,13 @@ bool CoinFlip(double threshold) {
   return distr(gen) < threshold;  // check if the result is below the threshold
 }
 
+int RandomIndex(int n) {
+  std::random_device rd;  // obtain a random number from hardware
+  std::mt19937 gen(rd());  // seed the generator
+  std::uniform_int_distribution<> distr(0, n);  // define the range
+  return distr(gen);  // generate and return the random integer
+}
+
 // Convert a vector of doubles to a probability distribution using softmax algorithm
 std::vector<double> Softmax(const std::vector<double>& input) {
     std::vector<double> output;
@@ -345,7 +352,29 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 
 }
 
-// std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRooms, int numTimes, int numFacilitators, double mutationRate)
-// {
+std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRooms, int numTimes, int numFacilitators, double mutationRate)
+{
+    std::vector<Schedule> newPopulation;
 
-// }
+    for (Schedule newSchedule : population)
+    {
+        for (Event& event : newSchedule.events)
+        {
+            // mutate room
+            if (CoinFlip(.1))
+                event.RoomIndex = RandomIndex(numRooms);
+            
+            // mutate time
+            if (CoinFlip(.1))
+                event.TimeIndex = RandomIndex(numTimes);
+
+            // mutate facilitator
+            if (CoinFlip(.1))
+                event.FacilitatorIndex = RandomIndex(numFacilitators);
+        }
+
+        newPopulation.push_back(newSchedule);
+    }
+
+    return newPopulation;
+}
