@@ -67,6 +67,31 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                 // Activity is scheduled at the same time in the same room as another of the activities: -0.5
                 if (e.TimeIndex == f.TimeIndex && e.RoomIndex == f.RoomIndex)
                     fitness -= .5;
+
+                if (activities.at(e.ActivityIndex).Section != activities.at(f.ActivityIndex).Section)
+                {
+                    if (activities.at(e.ActivityIndex).Name == "SLA101" && activities.at(f.ActivityIndex).Name == "SLA101")
+                    {
+                        // The 2 sections of SLA 101 are more than 4 hours apart: + 0.5
+                        if (std::abs(times.at(e.TimeIndex) - times.at(f.TimeIndex)) > 4.0)
+                            fitness += .5;
+
+                        // Both sections of SLA 101 are in the same time slot: -0.5
+                        if (e.TimeIndex == f.TimeIndex)
+                            fitness -= .5;
+                    }
+
+                    if (activities.at(e.ActivityIndex).Name == "SLA191" && activities.at(f.ActivityIndex).Name == "SLA191")
+                    {
+                        // The 2 sections of SLA 191 are more than 4 hours apart: + 0.5
+                        if (std::abs(times.at(e.TimeIndex) - times.at(f.TimeIndex)) > 4.0)
+                            fitness += .5;
+
+                        // Both sections of SLA 191 are in the same time slot: -0.5
+                        if (e.TimeIndex == f.TimeIndex)
+                            fitness -= .5;
+                    }
+                }
             }
         }
 
