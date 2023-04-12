@@ -55,6 +55,9 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
 {
     double fitness = 0;
 
+    // keep track of how many events a facilitator is assigned to, and at what times
+    std::vector<std::vector<int>> facilitatorLoads(facilitators.size(), std::vector<int>(times.size(), 0));
+
     for (Event e : s.events)
     {
         for (Event f : s.events)
@@ -64,8 +67,6 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                 // Activity is scheduled at the same time in the same room as another of the activities: -0.5
                 if (e.TimeIndex == f.TimeIndex && e.RoomIndex == f.RoomIndex)
                     fitness -= .5;
-
-
             }
         }
 
@@ -97,8 +98,41 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
         // Activities is overseen by some other facilitator: -0.1
         else
             fitness -= .1;
+
+        // keep track of how many events a facilitator is assigned to, and at what times
+        facilitatorLoads.at(e.FacilitatorIndex).at(e.TimeIndex)++;
+
     }
 
+    int facilitatorIndex = 0;
+
+    for (std::vector<int> loads : facilitatorLoads)
+    {
+        int loadTotal = 0;
+
+        for (int load : loads)
+        {
+            // Activity facilitator is scheduled for more than one activity at the same time: - 0.2
+            if (load > 1)
+                fitness -= .2;
+
+            // Activity facilitator is scheduled for only 1 activity in this time slot: + 0.2
+            else if (load == 1)
+                fitness += .2;
+        }
+
+        // Facilitator is scheduled to oversee more than 4 activities total: -0.5
+        if (loadTotal > 4)
+            fitness -= .5;
+
+        // Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
+        //     Exception: Dr. Tyler is committee chair and has other demands on his time. 
+        //     *No penalty if he’s only required to oversee < 2 activities.
+        else if ((loadTotal == 2 || loadTotal == 1) && facilitators.at(facilitatorIndex) != "Tyler")
+            fitness -= .4;
+
+        facilitatorIndex++;
+    }
 
     return fitness;
 
