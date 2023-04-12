@@ -40,6 +40,8 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
 
 std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators);
 
+std::vector<Schedule> InitPopulation(const std::vector<Activity>& activities, int numRooms, int numTimes, int numFacilitators, int n);
+
 std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int n);
 
 std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents);

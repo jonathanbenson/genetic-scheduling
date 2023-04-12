@@ -267,6 +267,32 @@ std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const 
     return fitnesses;
 }
 
+std::vector<Schedule> InitPopulation(const std::vector<Activity>& activities, int numRooms, int numTimes, int numFacilitators, int n)
+{
+    std::vector<Schedule> initPopulation;
+
+    for (int i = 0; i < n; ++i)
+    {
+        Schedule newSchedule;
+
+        for (int j = 0; j < activities.size(); ++j)
+        {
+            Event newEvent;
+
+            newEvent.ActivityIndex = j;
+            newEvent.RoomIndex = RandomIndex(numRooms);
+            newEvent.TimeIndex = RandomIndex(numTimes);
+            newEvent.FacilitatorIndex = RandomIndex(numFacilitators);
+
+            newSchedule.events.push_back(newEvent);
+        }
+
+        initPopulation.push_back(newSchedule);
+    }
+
+    return initPopulation;
+}
+
 std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int n)
 {
     // get vector of population indices for later code
