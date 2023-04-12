@@ -30,7 +30,7 @@ struct FacilitatorLoadInfo
 
 FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id);
 
-bool CoinFlip();
+bool CoinFlip(double threshold = .5);
 
 std::vector<double> Softmax(const std::vector<double>& input);
 
@@ -42,6 +42,6 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
 
 std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents);
 
-std::vector<Schedule> Mutate(const std::vector<Schedule>& population);
+std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRooms, int numTimes, int numFacilitators, double mutationRate);
 
 #endif

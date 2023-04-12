@@ -85,11 +85,11 @@ FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id
     return info;
 }
 
-bool CoinFlip() {
+bool CoinFlip(double threshold) {
   std::random_device rd;  // obtain a random number from hardware
   std::mt19937 gen(rd());  // seed the generator
-  std::uniform_int_distribution<> distr(0, 1);  // define the range
-  return distr(gen) == 0;  // flip the coin and return the result
+  std::uniform_real_distribution<> distr(0.0, 1.0);  // define the range
+  return distr(gen) < threshold;  // check if the result is below the threshold
 }
 
 // Convert a vector of doubles to a probability distribution using softmax algorithm
@@ -327,11 +327,11 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
         {
             child.events.push_back(Event());
 
-            // crossover facilitator
-            child.events.back().FacilitatorIndex = CoinFlip() ? lover1.events.at(j).FacilitatorIndex : lover2.events.at(j).FacilitatorIndex;
-
             // crossover room
             child.events.back().RoomIndex = CoinFlip() ? lover1.events.at(j).RoomIndex : lover2.events.at(j).RoomIndex;
+
+            // crossover facilitator
+            child.events.back().FacilitatorIndex = CoinFlip() ? lover1.events.at(j).FacilitatorIndex : lover2.events.at(j).FacilitatorIndex;
 
             // crossover time
             child.events.back().TimeIndex = CoinFlip() ? lover1.events.at(j).TimeIndex : lover2.events.at(j).TimeIndex;
@@ -345,7 +345,7 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 
 }
 
-// std::vector<Schedule> Mutate(const std::vector<Schedule>& population)
+// std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRooms, int numTimes, int numFacilitators, double mutationRate)
 // {
 
 // }
