@@ -361,15 +361,15 @@ std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRoo
         for (Event& event : newSchedule.events)
         {
             // mutate room
-            if (CoinFlip(.1))
+            if (CoinFlip(mutationRate))
                 event.RoomIndex = RandomIndex(numRooms);
             
             // mutate time
-            if (CoinFlip(.1))
+            if (CoinFlip(mutationRate))
                 event.TimeIndex = RandomIndex(numTimes);
 
             // mutate facilitator
-            if (CoinFlip(.1))
+            if (CoinFlip(mutationRate))
                 event.FacilitatorIndex = RandomIndex(numFacilitators);
         }
 
