@@ -85,6 +85,13 @@ FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id
     return info;
 }
 
+bool CoinFlip() {
+  std::random_device rd;  // obtain a random number from hardware
+  std::mt19937 gen(rd());  // seed the generator
+  std::uniform_int_distribution<> distr(0, 1);  // define the range
+  return distr(gen) == 0;  // flip the coin and return the result
+}
+
 // Convert a vector of doubles to a probability distribution using softmax algorithm
 std::vector<double> Softmax(const std::vector<double>& input) {
     std::vector<double> output;
@@ -262,7 +269,7 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
         populationIndices.push_back(i);
 
 
-    std::vector<Schedule> newPopulation;
+    std::vector<Schedule> parents;
 
     for (int i = 0; i < population.size(); ++i)
     {
@@ -289,16 +296,21 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
         }
 
         // add the best candidate to the new population
-        newPopulation.push_back(population.at(bestCandidateIndex));
+        parents.push_back(population.at(bestCandidateIndex));
     }
 
-    return newPopulation;
+    return parents;
 }
 
-// std::vector<Schedule> Crossover(const std::vector<Schedule>& population)
-// {
+std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
+{
+    std::vector<Schedule> newPopulation;
 
-// }
+
+
+    return newPopulation;
+
+}
 
 // std::vector<Schedule> Mutate(const std::vector<Schedule>& population)
 // {

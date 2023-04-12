@@ -1,10 +1,14 @@
 
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 #include "Config.h"
 
 int main()
 {
+    // seed the random number generator
+    srand(time(0));
 
     // parse activities and facilitators
     std::pair<std::vector<Activity>, std::vector<std::string>> activitiesAndFacilitators
