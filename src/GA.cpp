@@ -306,7 +306,40 @@ std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 {
     std::vector<Schedule> newPopulation;
 
+    for (int i = 0; i < parents.size(); ++i)
+    {
+        std::vector<Schedule> lovers;
 
+        std::sample(
+            parents.begin(),
+            parents.end(),
+            std::back_inserter(lovers),
+            2,
+            std::mt19937{std::random_device{}()}
+        );
+
+        const Schedule& lover1 = lovers.at(0);
+        const Schedule& lover2 = lovers.at(1);
+
+        Schedule child;
+
+        for (int j = 0; j < lover1.events.size(); ++j)
+        {
+            child.events.push_back(Event());
+
+            // crossover facilitator
+            child.events.back().FacilitatorIndex = CoinFlip() ? lover1.events.at(j).FacilitatorIndex : lover2.events.at(j).FacilitatorIndex;
+
+            // crossover room
+            child.events.back().RoomIndex = CoinFlip() ? lover1.events.at(j).RoomIndex : lover2.events.at(j).RoomIndex;
+
+            // crossover time
+            child.events.back().TimeIndex = CoinFlip() ? lover1.events.at(j).TimeIndex : lover2.events.at(j).TimeIndex;
+
+        }
+
+        newPopulation.push_back(child);
+    }
 
     return newPopulation;
 
