@@ -3,6 +3,7 @@
 #include <map>
 #include <set>
 #include <cmath>
+#include <random>
 #include "GA.h"
 
 
@@ -238,6 +239,8 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
         
     }
 
+    return fitness;
+
 }
 
 std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators)
@@ -249,3 +252,55 @@ std::vector<double> GetFitnesses(const std::vector<Schedule>& population, const 
 
     return fitnesses;
 }
+
+std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int n)
+{
+    // get vector of population indices for later code
+    std::vector<int> populationIndices;
+
+    for (int i = 0; i < population.size(); ++i)
+        populationIndices.push_back(i);
+
+
+    std::vector<Schedule> newPopulation;
+
+    for (int i = 0; i < population.size(); ++i)
+    {
+        // sample n candidates
+        std::vector<int> candidateIndices;
+
+        std::sample(
+            populationIndices.begin(),
+            populationIndices.end(),
+            std::back_inserter(candidateIndices),
+            n,
+            std::mt19937{std::random_device{}()}
+        );
+
+        // get candidate with max fitness
+        int bestCandidateIndex = candidateIndices.at(0);
+
+        for (int k = 1; k < candidateIndices.size(); k++)
+        {
+            int nextCandidateIndex = candidateIndices.at(k);
+
+            if (fitnesses.at(nextCandidateIndex) > fitnesses.at(bestCandidateIndex))
+                bestCandidateIndex = nextCandidateIndex;
+        }
+
+        // add the best candidate to the new population
+        newPopulation.push_back(population.at(bestCandidateIndex));
+    }
+
+    return newPopulation;
+}
+
+// std::vector<Schedule> Crossover(const std::vector<Schedule>& population)
+// {
+
+// }
+
+// std::vector<Schedule> Mutate(const std::vector<Schedule>& population)
+// {
+
+// }
