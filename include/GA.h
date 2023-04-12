@@ -20,17 +20,7 @@ struct Schedule
     std::vector<Event> events;
 };
 
-struct FacilitatorLoadInfo
-{
-    size_t Total;
-    size_t NumNonConflicts;
-    size_t NumConflicts;
-    size_t NumConsecutive;
-};
-
 double AverageFitness(const std::vector<double>& v);
-
-FacilitatorLoadInfo GetFacilitatorLoadInfo(const Schedule& s, int facilitator_id);
 
 bool CoinFlip(double threshold = .5);
 
