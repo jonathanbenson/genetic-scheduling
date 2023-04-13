@@ -1,13 +1,13 @@
 [
     {
-        "name": "SLA100",
+        "name": "SLA101",
         "section": "A",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
         "other_facilitators": ["Numen", "Richards"]
     },
     {
-        "name": "SLA100",
+        "name": "SLA101",
         "section": "B",
         "expected_enrollment": 50,
         "preferred_facilitators": ["Glen", "Lock", "Banks", "Zeldin"],
