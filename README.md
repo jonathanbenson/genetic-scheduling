@@ -1,6 +1,40 @@
 
 # Genetic Scheduling
 
+### Setup
+
+1. Clone the repository
+- To clone the repository and its submodules, open a terminal and run the following command:
+
+`git clone --recurse-submodules <repository_url>`
+
+- Replace <repository_url> with the URL of the repository.
+
+2. Build the Project
+
+- To build the project, you need a C++17 compiler. Make sure that the compiler is installed on your system and available in your PATH.
+
+- Open a terminal and navigate to the root directory of the cloned repository. Then, run the following commands:
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
+- The above commands create a build directory, run CMake to generate the makefiles, and then run make to build the project.
+
+3. Run the Project
+
+To run the project, navigate to the build directory and run the executable:
+
+```
+cd build
+./main
+```
+
+
+
 ### Example Program
 ```
 Genetic Scheduling Program
