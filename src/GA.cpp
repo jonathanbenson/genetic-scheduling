@@ -97,8 +97,14 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                 {
                     // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
                     if (abs(e.TimeIndex - f.TimeIndex) == 1)
-                        fitness += .5;
-
+                    {
+                        // In this case only (consecutive time slots), one of the activities is in Roman or Beach, and the other isn’t: -0.4
+                        if ((rooms.at(e.RoomIndex).Name == "Roman" || rooms.at(e.RoomIndex).Name == "Beach") && (rooms.at(f.RoomIndex).Name != "Roman" && rooms.at(f.RoomIndex).Name != "Beach"))
+                            fitness -= .4;
+                        else
+                            fitness += .5;
+                    }
+                        
                     // A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
                     else if (abs(e.TimeIndex - f.TimeIndex) == 2)
                         fitness += .25;
