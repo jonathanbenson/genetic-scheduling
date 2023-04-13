@@ -26,6 +26,8 @@ bool CoinFlip(double threshold = .5);
 
 int RandomIndex(int n);
 
+double AverageOfLastNValues(const std::vector<double>& vec, int n);
+
 std::vector<double> Softmax(const std::vector<double>& input);
 
 double Fitness(const Schedule& s, const std::vector<Activity>& activities, const std::vector<Room>& rooms, const std::vector<double>& times, const std::vector<std::string>& facilitators);

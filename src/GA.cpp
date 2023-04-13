@@ -29,6 +29,17 @@ int RandomIndex(int n) {
   return distr(gen);  // generate and return the random integer
 }
 
+double AverageOfLastNValues(const std::vector<double>& vec, int n) {
+    if (vec.size() < n) {
+        return 0; // or any other value that makes sense in your context
+    }
+    double sum = 0;
+    for (int i = vec.size() - n; i < vec.size(); i++) {
+        sum += vec[i];
+    }
+    return sum / n;
+}
+
 // Convert a vector of doubles to a probability distribution using softmax algorithm
 std::vector<double> Softmax(const std::vector<double>& input) {
     std::vector<double> output;

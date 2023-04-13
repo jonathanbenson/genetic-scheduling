@@ -1,0 +1,13 @@
+
+#ifndef DEFINES_H
+#define DEFINES_H
+
+#define CONFIG_PATH "../config/"
+
+#define POPULATION_SIZE 500
+#define NUM_GENERATIONS 100
+#define TOURNAMENT_SELECTION_SAMPLE_SIZE 3
+#define INIT_MUTATION_RATE .01
+#define MUTATION_HALF_LIFE 5
+
+#endif

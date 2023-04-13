@@ -3,11 +3,12 @@
 
 #include "acutest.h"
 #include "Config.h"
+#include "defines.h"
 
 void test_Config_ParseActivities()
 {
 
-    std::pair<std::vector<Activity>, std::vector<std::string>> activitiesAndFacilitators = ParseActivitiesAndFacilitators("./config/activities.json");
+    std::pair<std::vector<Activity>, std::vector<std::string>> activitiesAndFacilitators = ParseActivitiesAndFacilitators(std::string(CONFIG_PATH) + "activities.json");
 
     std::vector<Activity> activities = activitiesAndFacilitators.first;
     std::vector<std::string> facilitators = activitiesAndFacilitators.second;
@@ -139,7 +140,7 @@ void test_Config_ParseActivities()
 void test_Config_ParseRooms()
 {
 
-    std::vector<Room> rooms = ParseRooms("./config/rooms.json");
+    std::vector<Room> rooms = ParseRooms(std::string(CONFIG_PATH) + "rooms.json");
 
     // Assertions for Slater 003
     TEST_ASSERT(rooms.at(0).Name == "Slater");
@@ -191,7 +192,7 @@ void test_Config_ParseRooms()
 
 void test_Config_ParseTimes()
 {
-    std::vector<double> times = ParseTimes("./config/times.json");
+    std::vector<double> times = ParseTimes(std::string(CONFIG_PATH) + "times.json");
 
     TEST_ASSERT(times == std::vector<double>({10, 11, 12, 13, 14, 15}));
 }

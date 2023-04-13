@@ -5,11 +5,7 @@
 #include <cstdlib>
 #include "Config.h"
 #include "GA.h"
-
-#define POPULATION_SIZE 500
-#define NUM_GENERATIONS 100
-#define TOURNAMENT_SELECTION_SAMPLE_SIZE 5
-#define INIT_MUTATION_RATE 1.0
+#include "defines.h"
 
 int main()
 {
@@ -18,19 +14,26 @@ int main()
 
     // parse activities and facilitators
     std::pair<std::vector<Activity>, std::vector<std::string>> activitiesAndFacilitators
-    = ParseActivitiesAndFacilitators("./config/activities.json");
+    = ParseActivitiesAndFacilitators(std::string(CONFIG_PATH) + "activities.json");
 
     std::vector<Activity> activities = activitiesAndFacilitators.first;
     std::vector<std::string> facilitators = activitiesAndFacilitators.second;
 
     // parse rooms
-    std::vector<Room> rooms = ParseRooms("./config/rooms.json");
+    std::vector<Room> rooms = ParseRooms(std::string(CONFIG_PATH) + "rooms.json");
 
     // parse times
-    std::vector<double> times = ParseTimes("./config/times.json");
+    std::vector<double> times = ParseTimes(std::string(CONFIG_PATH) + "times.json");
 
     // init population
     std::vector<Schedule> generation = InitPopulation(activities.size(), rooms.size(), times.size(), facilitators.size(), POPULATION_SIZE);
+
+    // for plotting
+    std::vector<int> generations;
+    std::vector<double> averageFitnesses;
+    std::vector<double> mutationRates;
+
+    double mutationFactor = 1.0;
 
     // run the GA
     for (int n = 1; n <= NUM_GENERATIONS; ++n)
@@ -42,6 +45,12 @@ int main()
         // output current generation and average fitness
         double averageFitness = AverageFitness(fitnesses);
 
+        // for plotting
+        generations.push_back(n);
+        averageFitnesses.push_back(averageFitness);
+        mutationRates.push_back(INIT_MUTATION_RATE * mutationFactor);
+        
+        // output the current generation and its average fitness
         std::cout << "Generation: " << n << ", Avg. Fitness: " << averageFitness << std::endl;
 
         // select best candidates for crossover
@@ -51,12 +60,13 @@ int main()
         generation = PointCrossover(bestCandidates);
 
         // mutate new generation
-        generation = Mutate(generation, rooms.size(), times.size(), facilitators.size(), INIT_MUTATION_RATE / n);
+        generation = Mutate(generation, rooms.size(), times.size(), facilitators.size(), INIT_MUTATION_RATE * mutationFactor);
 
-
+        // halve the mutation if the current average fitness is greater than the average of the last n average fitnesses
+        if (averageFitnesses.size() >= MUTATION_HALF_LIFE && averageFitness > AverageOfLastNValues(averageFitnesses, MUTATION_HALF_LIFE))
+                mutationFactor /= 2;
 
     }
-
 
     return 0;
 }
