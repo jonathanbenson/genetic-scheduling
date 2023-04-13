@@ -1,19 +1,7 @@
 
 # Genetic Scheduling
 
-### Sample Output
-- Population size: 500
-- \# Generations: 50
-- Sample Size for Tournament Selection: 10
-- Initial Mutation Rate: 0.01
-- Mutation Rate Half-Life: 5
-
-#### Average Fitness
-![Average Fitness](docs/average_fitness.png)
-
-#### Mutation Rate
-![Mutation Rate](docs/mutation_rate.png)
-
+### Example Program
 ```
 Genetic Scheduling Program
 
@@ -86,5 +74,10 @@ Final schedule, Fitness: 18.9988
 15 SLA100B Loft310 Lock | SLA191B Beach301 Banks | SLA394A Roman216 Singer
 ```
 
+### Average Fitness
+![Average Fitness](docs/average_fitness.png)
+
+### Mutation Rate
+![Mutation Rate](docs/mutation_rate.png)
 
 
