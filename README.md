@@ -54,7 +54,7 @@ Open a terminal and navigate to the root directory of the cloned repository. The
 mkdir build
 cd build
 cmake ..
-make
+make -j$(nproc)
 ```
 
 The above commands create a build directory, run CMake to generate the makefiles, and then run make to build the project.
