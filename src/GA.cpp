@@ -92,6 +92,21 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
                             fitness -= .5;
                     }
                 }
+
+                if (activities.at(e.ActivityIndex).Name == "SLA191" && activities.at(f.ActivityIndex).Name == "SLA101")
+                {
+                    // A section of SLA 191 and a section of SLA 101 are overseen in consecutive time slots (e.g., 10 AM & 11 AM): +0.5
+                    if (abs(e.TimeIndex - f.TimeIndex) == 1)
+                        fitness += .5;
+
+                    // A section of SLA 191 and a section of SLA 101 are taught separated by 1 hour (e.g., 10 AM & 12:00 Noon): + 0.25
+                    else if (abs(e.TimeIndex - f.TimeIndex) == 2)
+                        fitness += .25;
+
+                    // A section of SLA 191 and a section of SLA 101 are taught in the same time slot: -0.25
+                    else if (e.TimeIndex == f.TimeIndex)
+                        fitness -= .25;
+                }
             }
         }
 
