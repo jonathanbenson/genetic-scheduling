@@ -3,6 +3,7 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <matplot/matplot.h>
 #include "Config.h"
 #include "GA.h"
 #include "defines.h"
@@ -29,7 +30,7 @@ int main()
     std::vector<Schedule> generation = InitPopulation(activities.size(), rooms.size(), times.size(), facilitators.size(), POPULATION_SIZE);
 
     // for plotting
-    std::vector<int> generations;
+    std::vector<size_t> generations;
     std::vector<double> averageFitnesses;
     std::vector<double> mutationRates;
 
@@ -67,6 +68,20 @@ int main()
                 mutationFactor /= 2;
 
     }
+
+    matplot::plot(generations, averageFitnesses, "-o")->marker_indices(generations);
+    matplot::title("Average Fitness");
+    matplot::xlabel("Generation");
+    matplot::ylabel("Average Fitness");
+
+    matplot::show();
+
+    matplot::plot(generations, mutationRates, "-o")->marker_indices(generations);
+    matplot::title("Mutation Rate");
+    matplot::xlabel("Generation");
+    matplot::ylabel("Mutation Rate");
+
+    matplot::show();
 
     return 0;
 }
