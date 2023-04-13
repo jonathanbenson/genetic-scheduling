@@ -103,13 +103,15 @@ int main()
             if (e.TimeIndex == timeIndex)
                 events.push_back(e);
 
-        for (const Event& e : events)
+        for (int i = 0; i < events.size(); ++i)
         {
+            const Event& e = events.at(i);
+
             std::string a = activities.at(e.ActivityIndex).Name + activities.at(e.ActivityIndex).Section;
             std::string r = rooms.at(e.RoomIndex).Name + std::to_string(rooms.at(e.RoomIndex).Number);
             std::string f = facilitators.at(e.FacilitatorIndex);
 
-            std::cout << a << " " << r << " " << f << " | ";
+            std::cout << a << " " << r << " " << f << (i == events.size() - 1 ? "" : " | ");
         }
 
         std::cout << std::endl;
