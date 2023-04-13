@@ -3,7 +3,7 @@
 
 ### Summary
 
-This program uses a genetic algorithm to generate a space utilization schedule for a client agency's activities. The schedule needs to determine the time slot, room, and facilitator for each activity. Each activity has a list of preferred and other facilitators, and the expected enrollment for each activity should be in a room big enough to hold it. The initial assignment is random, and the program will generate a population of random possible schedules and apply a genetic algorithm to improve it.
+This program uses a genetic algorithm to generate a space utilization schedule for college activities (classes). The schedule needs to determine the time slot, room, and facilitator for each activity. Each activity has a list of preferred and other facilitators, and the expected enrollment for each activity should be in a room big enough to hold it. The initial assignment is random, and the program will generate a population of random possible schedules and apply a genetic algorithm to improve it.
 
 ### Fitness Function
 - For each activity, fitness starts at 0.
