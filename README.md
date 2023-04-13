@@ -6,9 +6,7 @@
 1. Clone the repository
 - To clone the repository and its submodules, open a terminal and run the following command:
 
-`git clone --recurse-submodules <repository_url>`
-
-- Replace <repository_url> with the URL of the repository.
+`git clone --recurse-submodules https://github.com/jonathanbenson/genetic-scheduling`
 
 2. Build the Project
 
@@ -22,6 +20,7 @@ cd build
 cmake ..
 make
 ```
+
 - The above commands create a build directory, run CMake to generate the makefiles, and then run make to build the project.
 
 3. Run the Project
@@ -32,8 +31,6 @@ To run the project, navigate to the build directory and run the executable:
 cd build
 ./main
 ```
-
-
 
 ### Example Program
 ```
