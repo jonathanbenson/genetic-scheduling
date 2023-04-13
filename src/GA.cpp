@@ -176,17 +176,32 @@ double Fitness(const Schedule& s, const std::vector<Activity>& activities, const
             // Activity facilitator is scheduled for only 1 activity in this time slot: + 0.2
             else if (load == 1)
                 fitness += .2;
+
+            loadTotal += load;
         }
 
-        // Facilitator is scheduled to oversee more than 4 activities total: -0.5
-        if (loadTotal > 4)
-            fitness -= .5;
+        if (facilitators.at(facilitatorIndex) == "Tyler")
+        {
+            // Facilitator is scheduled to oversee more than 4 activities total: -0.5
+            if (loadTotal > 4)
+                fitness -= .5;
 
-        // Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
-        //     Exception: Dr. Tyler is committee chair and has other demands on his time. 
-        //     *No penalty if he’s only required to oversee < 2 activities.
-        else if ((loadTotal == 2 || loadTotal == 1) && facilitators.at(facilitatorIndex) != "Tyler")
-            fitness -= .4;
+            // Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
+            //     Exception: Dr. Tyler is committee chair and has other demands on his time. 
+            //      *No penalty if he’s only required to oversee < 2 activities.
+            else if (loadTotal > 1)
+                fitness -= .4;
+        }
+        else
+        {
+            // Facilitator is scheduled to oversee more than 4 activities total: -0.5
+            if (loadTotal > 4)
+                fitness -= .5;
+
+            // Facilitator is scheduled to oversee 1 or 2 activities*: -0.4
+            else if (loadTotal < 3)
+                fitness -= .4;
+        }
 
         facilitatorIndex++;
     }
