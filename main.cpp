@@ -37,7 +37,7 @@ int main()
     double mutationFactor = 1.0;
 
     std::cout << "Genetic Scheduling Program" << std::endl << std::endl;
-    
+
     std::cout << "Population size: " << POPULATION_SIZE << std::endl;
     std::cout << "# Generations: " << NUM_GENERATIONS << std::endl;
     std::cout << "Sample Size for Tournament Selection: " << TOURNAMENT_SELECTION_SAMPLE_SIZE << std::endl;
@@ -78,6 +78,41 @@ int main()
         if (averageFitnesses.size() >= MUTATION_HALF_LIFE && averageFitness > AverageOfLastNValues(averageFitnesses, MUTATION_HALF_LIFE))
                 mutationFactor /= 2;
 
+    }
+
+    // get the fittest schedule
+    double fittestIndex = 0;
+
+    for (int i = 0; i < averageFitnesses.size(); ++i)
+        if (averageFitnesses.at(i) > averageFitnesses.at(fittestIndex))
+            fittestIndex = i;
+
+    const Schedule& fittestSchedule = generation.at(fittestIndex);
+
+    
+    // output fittest schedule
+    std::cout << "Final schedule: " << averageFitnesses.at(fittestIndex) << std::endl << std::endl;
+
+    for (int timeIndex = 0; timeIndex < times.size(); ++timeIndex)
+    {
+        std::cout << times.at(timeIndex) << " ";
+
+        std::vector<Event> events;
+
+        for (const Event& e : fittestSchedule.events)
+            if (e.TimeIndex == timeIndex)
+                events.push_back(e);
+
+        for (const Event& e : events)
+        {
+            std::string a = activities.at(e.ActivityIndex).Name + activities.at(e.ActivityIndex).Section;
+            std::string r = rooms.at(e.RoomIndex).Name + std::to_string(rooms.at(e.RoomIndex).Number);
+            std::string f = facilitators.at(e.FacilitatorIndex);
+
+            std::cout << a << " " << r << " " << f << " | ";
+        }
+
+        std::cout << std::endl;
     }
 
     // graph the results
