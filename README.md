@@ -24,12 +24,20 @@ make
 
 The above commands create a build directory, run CMake to generate the makefiles, and then run make to build the project.
 
-3. Run the Project
+3. Test the Project
 
-To run the project, navigate to the build directory and run the executable:
+To test the project, navigate to the build directory and run the executable:
 
 ```
 cd build
+./test
+```
+
+4. Run the Project
+
+To run the project in the build directory, run the executable:
+
+```
 ./main
 ```
 
