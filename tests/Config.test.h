@@ -17,14 +17,14 @@ void test_Config_ParseActivities()
     std::sort(facilitators.begin(), facilitators.end());
     TEST_ASSERT(facilitators == std::vector<std::string>({"Banks", "Glen", "Lock", "Numen", "Richards", "Shaw", "Singer", "Tyler", "Uther", "Zeldin"}));
 
-    // Assertions for SLA100
-    TEST_ASSERT(activities.at(0).Name == "SLA100");
+    // Assertions for SLA101
+    TEST_ASSERT(activities.at(0).Name == "SLA101");
     TEST_ASSERT(activities.at(0).Section == "A");
     TEST_ASSERT(activities.at(0).ExpectedEnrollment == 50);
     TEST_ASSERT(activities.at(0).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
     TEST_ASSERT(activities.at(0).OtherFacilitators == std::vector<std::string>({"Numen", "Richards"}));
 
-    TEST_ASSERT(activities.at(1).Name == "SLA100");
+    TEST_ASSERT(activities.at(1).Name == "SLA101");
     TEST_ASSERT(activities.at(1).Section == "B");
     TEST_ASSERT(activities.at(1).ExpectedEnrollment == 50);
     TEST_ASSERT(activities.at(1).PreferredFacilitators == std::vector<std::string>({"Glen", "Lock", "Banks", "Zeldin"}));
