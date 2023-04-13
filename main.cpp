@@ -36,6 +36,17 @@ int main()
 
     double mutationFactor = 1.0;
 
+    std::cout << "Genetic Scheduling Program" << std::endl << std::endl;
+    
+    std::cout << "Population size: " << POPULATION_SIZE << std::endl;
+    std::cout << "# Generations: " << NUM_GENERATIONS << std::endl;
+    std::cout << "Sample Size for Tournament Selection: " << TOURNAMENT_SELECTION_SAMPLE_SIZE << std::endl;
+    std::cout << "Initial Mutation Rate: " << INIT_MUTATION_RATE << std::endl;
+    std::cout << "Mutation Rate Half-Life: " << MUTATION_HALF_LIFE << std::endl;
+
+    std::cout << std::endl << "Evolving schedules..." << std::endl << std::endl;
+
+
     // run the GA
     for (int n = 1; n <= NUM_GENERATIONS; ++n)
     {
@@ -69,6 +80,7 @@ int main()
 
     }
 
+    // graph the results
     matplot::plot(generations, averageFitnesses, "-o")->marker_indices(generations);
     matplot::title("Average Fitness");
     matplot::xlabel("Generation");
