@@ -273,7 +273,7 @@ std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, 
     return parents;
 }
 
-std::vector<Schedule> PointCrossover(const std::vector<Schedule>& parents)
+std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents)
 {
     std::vector<Schedule> newPopulation;
 
@@ -294,37 +294,21 @@ std::vector<Schedule> PointCrossover(const std::vector<Schedule>& parents)
 
         Schedule child;
 
-        int numEvents = lover1.events.size();
-
-        int point = RandomIndex(numEvents);
-
-        for (int j = 0; j < point; ++j)
+        for (int j = 0; j < lover1.events.size(); ++j)
         {
             child.events.push_back(Event());
 
-            // crossover room
-            child.events.back().RoomIndex = lover1.events.at(j).RoomIndex;
+            // activity remains the same regardless of the lover
+            child.events.back().ActivityIndex = lover1.events.at(j).ActivityIndex;
 
             // crossover facilitator
-            child.events.back().FacilitatorIndex = lover1.events.at(j).FacilitatorIndex;
-
-            // crossover time
-            child.events.back().TimeIndex = lover1.events.at(j).TimeIndex;
-
-        }
-
-        for (int j = point; j < numEvents; ++j)
-        {
-            child.events.push_back(Event());
+            child.events.back().FacilitatorIndex = CoinFlip() ? lover1.events.at(j).FacilitatorIndex : lover2.events.at(j).FacilitatorIndex;
 
             // crossover room
-            child.events.back().RoomIndex = lover2.events.at(j).RoomIndex;
-
-            // crossover facilitator
-            child.events.back().FacilitatorIndex = lover2.events.at(j).FacilitatorIndex;
+            child.events.back().RoomIndex = CoinFlip() ? lover1.events.at(j).RoomIndex : lover2.events.at(j).RoomIndex;
 
             // crossover time
-            child.events.back().TimeIndex = lover2.events.at(j).TimeIndex;
+            child.events.back().TimeIndex = CoinFlip() ? lover1.events.at(j).TimeIndex : lover2.events.at(j).TimeIndex;
 
         }
 

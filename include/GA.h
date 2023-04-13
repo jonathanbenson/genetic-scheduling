@@ -38,7 +38,7 @@ std::vector<Schedule> InitPopulation(int numActivities, int numRooms, int numTim
 
 std::vector<Schedule> TournamentSelect(const std::vector<Schedule>& population, const std::vector<double>& fitnesses, int k);
 
-std::vector<Schedule> PointCrossover(const std::vector<Schedule>& parents);
+std::vector<Schedule> UniformCrossover(const std::vector<Schedule>& parents);
 
 std::vector<Schedule> Mutate(const std::vector<Schedule>& population, int numRooms, int numTimes, int numFacilitators, double mutationRate);
 

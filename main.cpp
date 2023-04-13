@@ -69,7 +69,7 @@ int main()
         std::vector<Schedule> bestCandidates = TournamentSelect(generation, fitnesses, TOURNAMENT_SELECTION_SAMPLE_SIZE);
 
         // crossover new generation
-        generation = PointCrossover(bestCandidates);
+        generation = UniformCrossover(bestCandidates);
 
         // mutate new generation
         generation = Mutate(generation, rooms.size(), times.size(), facilitators.size(), INIT_MUTATION_RATE * mutationFactor);
@@ -91,7 +91,7 @@ int main()
 
     
     // output fittest schedule
-    std::cout << "Final schedule: " << averageFitnesses.at(fittestIndex) << std::endl << std::endl;
+    std::cout << std::endl << "Final schedule, Fitness: " << averageFitnesses.at(fittestIndex) << std::endl << std::endl;
 
     for (int timeIndex = 0; timeIndex < times.size(); ++timeIndex)
     {
@@ -114,6 +114,8 @@ int main()
 
         std::cout << std::endl;
     }
+
+    std::cout << std::endl << std::endl;
 
     // graph the results
     matplot::plot(generations, averageFitnesses, "-o")->marker_indices(generations);
