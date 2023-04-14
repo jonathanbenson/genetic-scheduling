@@ -5,6 +5,10 @@
 
 This program uses a genetic algorithm to generate a space utilization schedule for college activities (classes). The schedule needs to determine the time slot, room, and facilitator for each activity. Each activity has a list of preferred and other facilitators, and the expected enrollment for each activity should be in a room big enough to hold it. The initial assignment is random, and the program will generate a population of random possible schedules and apply a genetic algorithm to improve it.
 
+### Genetic Algorithm
+
+A genetic algorithm is an optimization algorithm that simulates the process of natural selection to solve complex problems. In this implementation, tournament selection is used as the selection method, which means that a random subset of individuals from the population is selected to compete, and the fittest individual is chosen as the parent. The crossover method used in this algorithm is uniform, where each gene is selected from one of the parents with equal probability. The mutation method employed is point mutation, which randomly selects a gene from an individual and changes it to a new value. The rate of mutation is halved over time if the average of the last n (mutation half-life) generational fitnesses is less than the fitness of the current generation.
+
 ### Fitness Function
 - For each activity, fitness starts at 0.
 - Activity is scheduled at the same time in the same room as another of the activities: -0.5
