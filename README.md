@@ -1,9 +1,5 @@
 
 # Genetic Scheduling
-- Jonathan Benson
-- Intro to AI
-- 4/15/2023
-- https://github.com/jonathanbenson/genetic-scheduling
 
 ### Abstract
 
